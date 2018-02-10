@@ -1,0 +1,27 @@
+{
+  "name": "tco-gulp-recipes",
+  "version": "1.0.0",
+  "description": "Gulp recipes",
+  "main": "gulpfile.babel.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/truchot/gulp-recipes.git"
+  },
+  "keywords": [
+    "gulp"
+  ],
+  "author": "Florian Truchot",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/truchot/gulp-recipes/issues"
+  },
+  "homepage": "https://github.com/truchot/gulp-recipes#readme",
+  "devDependencies": {
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
+    "gulp": "^3.9.1"
+  }
+}
