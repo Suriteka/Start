@@ -7,12 +7,30 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-gulp.task("sass", function () {
-    return gulp.src(process.env.SASS_SRC)
+let SASS_SRC = process.env.SRC + "/**/*.scss";
+let SASS_DEST = process.env.DEST;
+
+if(process.env.SASS_SRC){
+    SASS_SRC = process.env.SASS_SRC;
+}
+
+if(process.env.SASS_DEST){
+    SASS_DEST = process.env.SASS_DEST;
+}
+
+function compileSass() {
+    return gulp.src(SASS_SRC)
         .pipe(sourcemaps.init())
         .pipe(sass()) // Compile SASS to CSS
         .pipe(autoprefixer()) // Add vendor prefixes to CSS rules by Can I Use
         .pipe(cssnano()) // Minify CSS
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest(process.env.SASS_DEST));
-});
+        .pipe(gulp.dest(SASS_DEST));
+};
+
+export { SASS_SRC, SASS_DEST };
+
+const runSass = gulp.series(compileSass);
+export default runSass;
+
+gulp.task("sass", runSass);

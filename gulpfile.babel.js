@@ -1,6 +1,6 @@
 import gulp from 'gulp';
-import requireDir from 'require-dir';
+import HubRegistry from 'gulp-hub';
 
-requireDir('./tasks');
+const hub = new HubRegistry(['./tasks/*.js']);
 
-gulp.task('default', () => {});
+gulp.registry(hub);
