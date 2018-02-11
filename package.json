@@ -28,5 +28,8 @@
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.0",
     "require-dir": "^1.0.0"
+  },
+  "dependencies": {
+    "dotenv": "^5.0.0"
   }
 }
