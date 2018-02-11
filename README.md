@@ -28,10 +28,14 @@ gulp sass
 ___
 *** 
 ### TODO
-1. ~~JavaScript~~
-2. ~~Sass~~
-3. Images optimisation
-4. SVG sprites
-5. WordPress installation with WP CLI
-6. WordPress deploy with WP CLI
-7. LESS
+* Scripts
+    * ~~JavaScript~~
+* Styles
+    * ~~Sass~~
+    * LESS
+* Images 
+    * Optimisation
+    * SVG sprites
+* WordPress
+    * Installation with WP CLI
+    * Deploy with WP CLI
