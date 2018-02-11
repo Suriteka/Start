@@ -46,18 +46,28 @@ And run gulp task named `sass`
 ```
 gulp sass
 ```
+## Working with HTML
+You can add `HTML_SRC` and `HTML_DEST` constants in your `.env` file, to specify custom directories for your HTML files, like this:
+```
+HTML_SRC=./src/html/**/*.html
+HTML_DEST=./assets/html/
+```
+And run gulp task named `sass`
+
+```
+gulp html
+```
 
 ## TODO
-* Scripts
-    * ~~JavaScript~~
-* Styles
-    * ~~Sass~~
-    * LESS
-* Images 
-    * Optimisation
-    * SVG sprites
-* Server
-    * ~~BrowserSync (live-reload)~~
-* WordPress with[WP CLI](http://wp-cli.org/ "The command line interface for WordPress")
-    * Installation
-    * Deploy
+- [x] ~~JavaScript ES6+ compilation with Babel~~
+- [x] ~~JS concatenation & minification~~
+- [x] ~~Sass compilation~~
+- [x] ~~CSS concatenation & minification~~
+- [x] ~~Livereload browser during development~~
+- [x] ~~HTML minification~~
+- [ ] Clean destination folder on build
+- [ ] LESS compilation
+- [ ] Optimize images
+- [ ] Create SVG sprites
+- [ ] WordPress Installation with [WP CLI](http://wp-cli.org/ "The command line interface for WordPress")
+- [ ] Deploy WordPress with [WP CLI](http://wp-cli.org/ "The command line interface for WordPress")
