@@ -15,6 +15,15 @@ SRC=./src
 DEST=./public
 ```
 
+Launch a static server and watch HTML, JS, Sass updates with :
+```
+npm run start
+```
+By default it serves current directory, if you want to use proxy, you can add `URL` constant in your `.env` file, like this:
+```
+URL=http://example.local
+```
+
 ## Working with JavaScript
 You can add `JS_SRC` and `JS_DEST` constants in your `.env` file, to specify custom directories for your JavaScript files, like this:
 ```
