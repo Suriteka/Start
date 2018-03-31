@@ -2,6 +2,9 @@
 ## Installation
 Install dependencies
 ```
+git clone https://github.com/truchot/gulp-recipe/
+```
+```
 npm i
 ```
 Configure your environment with `.env` file. 
@@ -15,7 +18,7 @@ SRC=./src
 DEST=./public
 ```
 
-Launch a static server and watch HTML, JS, Sass updates with :
+Launch a static server and watch for HTML, JS, Sass files any changes with :
 ```
 npm run start
 ```
@@ -24,22 +27,11 @@ By default it serves current directory, if you want to use proxy, you can add `U
 URL=http://example.local
 ```
 
-## Working with JavaScript
-You can add `JS_SRC` and `JS_DEST` constants in your `.env` file, to specify custom directories for your JavaScript files, like this:
-```
-JS_SRC=./src/scripts/**/*.js
-JS_DEST=./assets/scripts/
-```
-You can run only JavaScript files compilation with gulp task named `scripts`
-```
-gulp scripts
-```
-
 ## Working with Sass
 You can add `SASS_SRC` and `SASS_DEST` constants in your `.env` file, to specify custom directories for your Sass files, like this:
 ```
 SASS_SRC=./src/styles/**/*.scss
-SASS_DEST=./assets/styles/
+SASS_DEST=./public/styles/
 ```
 And run gulp task named `sass`
 
@@ -50,24 +42,52 @@ gulp sass
 You can add `HTML_SRC` and `HTML_DEST` constants in your `.env` file, to specify custom directories for your HTML files, like this:
 ```
 HTML_SRC=./src/html/**/*.html
-HTML_DEST=./assets/html/
+HTML_DEST=./public/html/
 ```
-And run gulp task named `sass`
+And run gulp task named `html`
 
 ```
 gulp html
 ```
+## Working with JavScript
+You can add `JS_SRC` and `JS_DEST` constants in your `.env` file, to specify custom directories for your JavaScript files, like this:
+```
+JS_SRC=./src/scripts/**/*.js
+JS_DEST=./public/scripts/
+```
+And run gulp task named `scripts`
+
+```
+gulp scripts
+```
 
 ## TODO
+### Assets
+#### Scripts
 - [x] ~~JavaScript ES6+ compilation with Babel~~
 - [x] ~~JS concatenation & minification~~
+#### Styles
 - [x] ~~Sass compilation~~
+- [ ] LESS compilation (https://www.npmjs.com/package/gulp-less)
 - [x] ~~CSS concatenation & minification~~
-- [x] ~~Livereload browser during development~~
+- [ ] RTL support (https://www.npmjs.com/package/gulp-rtlcss)
+- [ ] Generate unminified stylesheet (https://www.npmjs.com/package/gulp-cssbeautify)
+#### Template
 - [x] ~~HTML minification~~
+#### Fonts
+- [ ] Generate missing extension (https://www.npmjs.com/package/gulp-ttf2woff)
+#### Images
+- [ ] Optimize images (https://www.npmjs.com/package/gulp-imagemin)
+- [ ] Create SVG sprites (https://www.npmjs.com/package/gulp-svgstore)
+- [ ] Convert images to [WebP](https://developers.google.com/speed/webp/ "A new image format for the Web") (https://www.npmjs.com/package/gulp-webp)
+### Workflow
+- [x] ~~Livereload browser during development~~
 - [ ] Clean destination folder on build
-- [ ] LESS compilation
-- [ ] Optimize images
-- [ ] Create SVG sprites
+- [ ] Zip builded files 
+- [ ] Check accessibility (https://www.npmjs.com/package/gulp-accessibility)
+- [ ] Create release
+- [ ] Changelog based on commits 
+### Framework
 - [ ] WordPress Installation with [WP CLI](http://wp-cli.org/ "The command line interface for WordPress")
+- [ ] Generate POT file (https://www.npmjs.com/package/gulp-wp-pot)
 - [ ] Deploy WordPress with [WP CLI](http://wp-cli.org/ "The command line interface for WordPress")
