@@ -3,6 +3,7 @@ import sourcemaps from "gulp-sourcemaps";
 import sass from "gulp-sass";
 import autoprefixer from "gulp-autoprefixer";
 import cssnano from "gulp-cssnano";
+import plumber from "gulp-plumber";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -20,11 +21,13 @@ if(process.env.SASS_DEST){
 
 function compileSass() {
     return gulp.src(SASS_SRC)
+        .pipe(plumber()) // Prevent pipe breaking caused by errors
         .pipe(sourcemaps.init())
         .pipe(sass()) // Compile SASS to CSS
         .pipe(autoprefixer()) // Add vendor prefixes to CSS rules by Can I Use
         .pipe(cssnano()) // Minify CSS
         .pipe(sourcemaps.write())
+        .pipe(plumber.stop())
         .pipe(gulp.dest(SASS_DEST));
 };
 
