@@ -79,7 +79,6 @@ npm run build
 ```
 
 This will generate a production files into `DEST`
-
 ## TODO
 ### Assets
 #### Styles
