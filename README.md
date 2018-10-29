@@ -60,6 +60,14 @@ And run gulp task named `scripts`
 ```
 gulp scripts
 ```
+## And more
+You can set a folder for *images*, *vendors* (assets that you don't need to be build), *fonts*... You can change folder variables in the `.env` file. When everything is set you can start developing by launching the gulp task named `scripts` or `build` if you want to build.
+
+You can also launch gulp tasks one by one by writing `gulp` and the name of the task. For example: 
+- `gulp accessibility`
+- `gulp clean`
+- `gulp font`
+- `gulp image`
 
 ## TODO
 ### Assets
@@ -77,7 +85,6 @@ gulp scripts
 #### Fonts
 - [ ] Generate missing extension (https://www.npmjs.com/package/gulp-ttf2woff)
 #### Images
-- [ ] Optimize images (https://www.npmjs.com/package/gulp-imagemin)
 - [ ] Create SVG sprites (https://www.npmjs.com/package/gulp-svgstore)
 - [ ] Convert images to [WebP](https://developers.google.com/speed/webp/ "A new image format for the Web") (https://www.npmjs.com/package/gulp-webp)
 ### Workflow
