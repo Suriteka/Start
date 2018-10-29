@@ -68,7 +68,7 @@ You can also launch gulp tasks one by one by writing `gulp` and the name of the 
 - `gulp revisionRewrite`
 - `gulp clean`
 - `gulp accessibility`
-- `gulp vendors`
+- `gulp vendorCopy`
  
 
 ## Build
