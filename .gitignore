@@ -16,3 +16,7 @@ yarn-error.log*
 
 # Optional npm cache directory
 .npm
+
+# Build folder
+dist/
+build/
