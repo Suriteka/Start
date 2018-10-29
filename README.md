@@ -66,6 +66,7 @@ You can set a folder for *images*, *vendors* (assets that you don't need to be b
 You can also launch gulp tasks one by one by writing `gulp` and the name of the task. For example: 
 - `gulp accessibility`
 - `gulp clean`
+- `gulp font`
 
 ## TODO
 ### Assets
