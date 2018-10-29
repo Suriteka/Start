@@ -49,39 +49,41 @@ And run gulp task named `html`
 ```
 gulp html
 ```
-## Working with JavScript
+## Working with JavaScript
 You can add `JS_SRC` and `JS_DEST` constants in your `.env` file, to specify custom directories for your JavaScript files, like this:
 ```
 JS_SRC=./src/scripts/**/*.js
 JS_DEST=./public/scripts/
+JS_NAME='bundle.js'
 ```
 And run gulp task named `scripts`
 
 ```
 gulp scripts
 ```
+## And more
+You can set a folder for *images*, *vendors* (assets that you don't need to be build), *fonts*... You can change folder variables in the `.env` file. When everything is set you can start developing by launching the gulp task named `scripts` or `build` if you want to build.
+
+You can also launch gulp tasks one by one by writing `gulp` and the name of the task. For example: 
+- `gulp revision`
+- `gulp revisionRewrite`
+- `gulp accessibility`
+- `gulp clean`
+- `gulp font`
+- `gulp image`
 
 ## TODO
 ### Assets
-#### Scripts
-- [x] ~~JavaScript ES6+ compilation with Babel~~
-- [x] ~~JS concatenation & minification~~
 #### Styles
-- [x] ~~Sass compilation~~
 - [ ] LESS compilation (https://www.npmjs.com/package/gulp-less)
-- [x] ~~CSS concatenation & minification~~
 - [ ] RTL support (https://www.npmjs.com/package/gulp-rtlcss)
 - [ ] Generate unminified stylesheet (https://www.npmjs.com/package/gulp-cssbeautify)
-#### Template
-- [x] ~~HTML minification~~
 #### Fonts
 - [ ] Generate missing extension (https://www.npmjs.com/package/gulp-ttf2woff)
 #### Images
-- [ ] Optimize images (https://www.npmjs.com/package/gulp-imagemin)
 - [ ] Create SVG sprites (https://www.npmjs.com/package/gulp-svgstore)
 - [ ] Convert images to [WebP](https://developers.google.com/speed/webp/ "A new image format for the Web") (https://www.npmjs.com/package/gulp-webp)
 ### Workflow
-- [x] ~~Livereload browser during development~~
 - [ ] Clean destination folder on build
 - [ ] Zip builded files 
 - [ ] Check accessibility (https://www.npmjs.com/package/gulp-accessibility)
