@@ -1,0 +1,24 @@
+/* TEAM */
+Name: 
+Website: 
+
+/* THANKS */				
+Name:
+
+/* SITE */
+Last update:  AAAA/MM/JJ 
+
+Standards: 
+- HTML5
+- CSS3
+- Javascript (ES6)
+
+Software: 
+- Gulp (minify, sass, plumber, rev, concat, ...)
+- Webpack
+- Eslint
+- Browsersync
+- Babel
+- Imagemin
+- SVGmin
+- Dotenv

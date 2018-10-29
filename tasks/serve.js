@@ -7,7 +7,7 @@ import runScripts, { JS_SRC } from './scripts';
 import runHtml, { HTML_SRC } from './html';
 import runImages, { IMG_SRC } from './image';
 import runFont, { FONT_SRC } from './font';
-import runVendor, { VENDOR_SRC } from './vendors';
+import runVendor, { VENDOR_SRC } from './vendor';
 
 const server = browserSync.create();
 
