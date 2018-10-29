@@ -5,7 +5,8 @@
   "main": "gulpfile.babel.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "gulp serve"
+    "start": "NODE_ENV=dev gulp serve",
+    "build": "NODE_ENV=prod gulp build"
   },
   "repository": {
     "type": "git",

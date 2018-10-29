@@ -1,9 +1,25 @@
-import gulp from "gulp";
-import runSass from "./sass";
-import runScripts from "./scripts";
-import runHtml from "./html";
+import gulp from 'gulp';
+import dotenv from 'dotenv';
+import runClean from './clean';
+import runSass from './sass';
+import runScripts from './scripts';
+import runHtml from './html';
+import runImages from './images';
+import runAccessibility from './accessibility';
+import runFont from './font';
+import runRevision from './revision';
+import runCopyVendor from './vendors';
 
-const runBuild = gulp.series(runHtml, gulp.parallel(runSass, runScripts));
+dotenv.config();
+
+let runBuild;
+
+if (process.env.NODE_ENV === 'prod') {
+	runBuild = gulp.series(runClean, runHtml, gulp.parallel(runSass, runScripts, runImages), runFont, runAccessibility, runRevision, runCopyVendor);
+} else {
+	runBuild = gulp.series(runClean, runHtml, gulp.parallel(runSass, runScripts, runImages, runFont));
+}
+
 export default runBuild;
 
-gulp.task("build", runBuild);
+gulp.task('build', runBuild);
