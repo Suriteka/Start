@@ -4,7 +4,7 @@ import runClean from './clean';
 import runSass from './sass';
 import runScripts from './scripts';
 import runHtml from './html';
-import runImages from './images';
+import runImages from './image';
 import runAccessibility from './accessibility';
 import runFont from './font';
 import runRevision from './revision';
