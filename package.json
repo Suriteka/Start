@@ -36,7 +36,8 @@
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.0",
     "gulp-accessibility": "^3.1.1",
-    "gulp-clean-css": "^3.10.0"
+    "gulp-clean-css": "^3.10.0",
+    "gulp-ttf2woff": "^1.1.1"
   },
   "dependencies": {
     "babel": "^6.23.0",
