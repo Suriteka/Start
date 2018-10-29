@@ -68,7 +68,7 @@ You can also launch gulp tasks one by one by writing `gulp` and the name of the 
 - `gulp revisionRewrite`
 - `gulp clean`
 - `gulp accessibility`
-- `gulp vendors`
+- `gulp vendorCopy`
  
 
 ## Build
@@ -79,16 +79,32 @@ npm run build
 ```
 
 This will generate a production files into `DEST`
-## TODO
+
+## Roadmap
 ### Assets
+#### Scripts
+- [x] ~~JavaScript ES6+ compilation with Babel~~
+- [x] ~~JavaScript concatenation & minification~~
 #### Styles
+- [x] ~~Sass compilation~~
+- [x] ~~CSS concatenation & minification~~
+- [x] ~~Livereload browser during development~~
 - [ ] RTL support (https://www.npmjs.com/package/gulp-rtlcss)
 - [ ] Generate unminified stylesheet (https://www.npmjs.com/package/gulp-cssbeautify)
 - [ ] LESS compilation (https://www.npmjs.com/package/gulp-less)
+#### Template
+- [x] ~~HTML minification~~
+#### Fonts
+- [x] ~~Generate missing extension~~
 #### Images
+- [x] ~~Optimize images~~
 - [ ] Create SVG sprites (https://www.npmjs.com/package/gulp-svgstore)
 - [ ] Convert images to [WebP](https://developers.google.com/speed/webp/ "A new image format for the Web") (https://www.npmjs.com/package/gulp-webp)
 ### Workflow
+- [x] ~~Livereload browser during development~~
+- [x] ~~Clean destination folder on build~~
+- [x] ~~Check accessibility~~
+- [ ] Zip builded files 
 - [ ] Create release
 - [ ] Changelog based on commits
 - [ ] Zip builded files 
