@@ -67,6 +67,7 @@ You can also launch gulp tasks one by one by writing `gulp` and the name of the 
 - `gulp accessibility`
 - `gulp clean`
 - `gulp font`
+- `gulp image`
 
 ## TODO
 ### Assets
@@ -84,7 +85,6 @@ You can also launch gulp tasks one by one by writing `gulp` and the name of the 
 #### Fonts
 - [ ] Generate missing extension (https://www.npmjs.com/package/gulp-ttf2woff)
 #### Images
-- [ ] Optimize images (https://www.npmjs.com/package/gulp-imagemin)
 - [ ] Create SVG sprites (https://www.npmjs.com/package/gulp-svgstore)
 - [ ] Convert images to [WebP](https://developers.google.com/speed/webp/ "A new image format for the Web") (https://www.npmjs.com/package/gulp-webp)
 ### Workflow
