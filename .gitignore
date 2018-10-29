@@ -17,6 +17,10 @@ yarn-error.log*
 # Optional npm cache directory
 .npm
 
-# Build folder
+# Dest folder
+public/
 dist/
 build/
+
+# Mac
+.DS_STORE

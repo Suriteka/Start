@@ -1,8 +1,8 @@
-# Gulp Recipes
+# Gulp + Webpack Recipes
 ## Installation
 Install dependencies
 ```
-git clone https://github.com/truchot/gulp-recipe/
+git clone https://github.com/suriteka/gulp-recipe/
 ```
 ```
 npm i
@@ -26,18 +26,6 @@ By default it serves current directory, if you want to use proxy, you can add `U
 ```
 URL=http://example.local
 ```
-
-## Working with Sass
-You can add `SASS_SRC` and `SASS_DEST` constants in your `.env` file, to specify custom directories for your Sass files, like this:
-```
-SASS_SRC=./src/styles/**/*.scss
-SASS_DEST=./public/styles/
-```
-And run gulp task named `sass`
-
-```
-gulp sass
-```
 ## Working with HTML
 You can add `HTML_SRC` and `HTML_DEST` constants in your `.env` file, to specify custom directories for your HTML files, like this:
 ```
@@ -48,6 +36,17 @@ And run gulp task named `html`
 
 ```
 gulp html
+```
+## Working with Sass
+You can add `SASS_SRC` and `SASS_DEST` constants in your `.env` file, to specify custom directories for your Sass files, like this:
+```
+SASS_SRC=./src/styles/**/*.scss
+SASS_DEST=./public/styles/
+```
+And run gulp task named `sass`
+
+```
+gulp sass
 ```
 ## Working with JavaScript
 You can add `JS_SRC` and `JS_DEST` constants in your `.env` file, to specify custom directories for your JavaScript files, like this:
@@ -67,29 +66,32 @@ You can set a folder for *images*, *vendors* (assets that you don't need to be b
 You can also launch gulp tasks one by one by writing `gulp` and the name of the task. For example: 
 - `gulp revision`
 - `gulp revisionRewrite`
-- `gulp accessibility`
 - `gulp clean`
-- `gulp font`
-- `gulp image`
-- `gulp vendor`
+- `gulp accessibility`
+- `gulp vendors`
+ 
 
+## Build
+When the project is ready to go, You can run the npm script
+
+```
+npm run build
+```
+
+This will generate a production files into `DEST`
 ## TODO
 ### Assets
 #### Styles
-- [ ] LESS compilation (https://www.npmjs.com/package/gulp-less)
 - [ ] RTL support (https://www.npmjs.com/package/gulp-rtlcss)
 - [ ] Generate unminified stylesheet (https://www.npmjs.com/package/gulp-cssbeautify)
-#### Fonts
-- [ ] Generate missing extension (https://www.npmjs.com/package/gulp-ttf2woff)
+- [ ] LESS compilation (https://www.npmjs.com/package/gulp-less)
 #### Images
 - [ ] Create SVG sprites (https://www.npmjs.com/package/gulp-svgstore)
 - [ ] Convert images to [WebP](https://developers.google.com/speed/webp/ "A new image format for the Web") (https://www.npmjs.com/package/gulp-webp)
 ### Workflow
-- [ ] Clean destination folder on build
-- [ ] Zip builded files 
-- [ ] Check accessibility (https://www.npmjs.com/package/gulp-accessibility)
 - [ ] Create release
-- [ ] Changelog based on commits 
+- [ ] Changelog based on commits
+- [ ] Zip builded files 
 ### Framework
 - [ ] WordPress Installation with [WP CLI](http://wp-cli.org/ "The command line interface for WordPress")
 - [ ] Generate POT file (https://www.npmjs.com/package/gulp-wp-pot)
