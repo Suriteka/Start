@@ -71,6 +71,7 @@ You can also launch gulp tasks one by one by writing `gulp` and the name of the 
 - `gulp clean`
 - `gulp font`
 - `gulp image`
+- `gulp vendor`
 
 ## TODO
 ### Assets
