@@ -49,11 +49,12 @@ And run gulp task named `html`
 ```
 gulp html
 ```
-## Working with JavScript
+## Working with JavaScript
 You can add `JS_SRC` and `JS_DEST` constants in your `.env` file, to specify custom directories for your JavaScript files, like this:
 ```
 JS_SRC=./src/scripts/**/*.js
 JS_DEST=./public/scripts/
+JS_NAME='bundle.js'
 ```
 And run gulp task named `scripts`
 

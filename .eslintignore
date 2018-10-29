@@ -1,0 +1,7 @@
+#Ignoring folders
+tasks/
+dist/
+public/
+buid/
+node_modules/
+vendors/
