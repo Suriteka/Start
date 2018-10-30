@@ -7,7 +7,7 @@ import runScripts, { JS_SRC } from './scripts';
 import runHtml, { HTML_SRC } from './html';
 import runFonts, { FONT_SRC } from './fonts';
 import runImages, { IMG_SRC } from './images';
-import runVendor, { VENDOR_SRC } from './vendor';
+import runVendors, { VENDOR_SRC } from './vendors';
 
 const server = browserSync.create();
 
@@ -40,9 +40,9 @@ const watchSass = () => gulp.watch(SASS_SRC, gulp.series(runSass, reload));
 const watchScripts = () => gulp.watch(JS_SRC, gulp.series(runScripts, reload));
 const watchImages = () => gulp.watch(IMG_SRC, gulp.series(runImages, reload));
 const watchFont = () => gulp.watch(FONT_SRC, gulp.series(runFonts, reload));
-const watchVendor = () => gulp.watch(VENDOR_SRC, gulp.series(runVendor, reload));
+const watchVendors = () => gulp.watch(VENDOR_SRC, gulp.series(runVendors, reload));
 
-const runWatch = gulp.parallel(watchHtml, watchSass, watchScripts, watchImages, watchFont, watchVendor);
+const runWatch = gulp.parallel(watchHtml, watchSass, watchScripts, watchImages, watchFont, watchVendors);
 const runServe = gulp.series(runBuild, serve, runWatch);
 
 gulp.task('serve', runServe);
