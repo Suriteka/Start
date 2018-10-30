@@ -39,10 +39,10 @@ const watchHtml = () => gulp.watch(HTML_SRC, gulp.series(runHtml, reload));
 const watchSass = () => gulp.watch(SASS_SRC, gulp.series(runSass, reload));
 const watchScripts = () => gulp.watch(JS_SRC, gulp.series(runScripts, reload));
 const watchImages = () => gulp.watch(IMG_SRC, gulp.series(runImages, reload));
-const watchFont = () => gulp.watch(FONT_SRC, gulp.series(runFonts, reload));
+const watchFonts = () => gulp.watch(FONT_SRC, gulp.series(runFonts, reload));
 const watchVendors = () => gulp.watch(VENDOR_SRC, gulp.series(runVendors, reload));
 
-const runWatch = gulp.parallel(watchHtml, watchSass, watchScripts, watchImages, watchFont, watchVendors);
+const runWatch = gulp.parallel(watchHtml, watchSass, watchScripts, watchImages, watchFonts, watchVendors);
 const runServe = gulp.series(runBuild, serve, runWatch);
 
 gulp.task('serve', runServe);
