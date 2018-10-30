@@ -6,7 +6,7 @@ import runScripts from './scripts';
 import runHtml from './html';
 import runImages from './image';
 import runAccessibility from './accessibility';
-import runFont from './font';
+import runFont from './fonts';
 import runRevision from './revision';
 import runCopyVendor from './vendor';
 

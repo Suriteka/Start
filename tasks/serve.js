@@ -6,7 +6,7 @@ import runSass, { SASS_SRC } from './sass';
 import runScripts, { JS_SRC } from './scripts';
 import runHtml, { HTML_SRC } from './html';
 import runImages, { IMG_SRC } from './image';
-import runFont, { FONT_SRC } from './font';
+import runFont, { FONT_SRC } from './fonts';
 import runVendor, { VENDOR_SRC } from './vendor';
 
 const server = browserSync.create();
