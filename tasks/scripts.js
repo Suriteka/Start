@@ -15,7 +15,7 @@ function isFixed(file) {
 	return file.eslint != null && file.eslint.fixed;
 }
 
-function fixScripts() {
+function lintScripts() {
 	return gulp.src(JS_SRC)
 		.pipe(eslint({ fix: true }))
 		.pipe(eslint.format())
@@ -25,7 +25,7 @@ function fixScripts() {
 function compileScripts() {
 	return gulp.src(JS_SRC)
 		.pipe(webpackStream(webpackConfig), webpack)
-		.on('error', function handleError() {
+		.on('error', function handleError() { // It crashes if we make an arrow function
 			this.emit('end'); // Recover from errors
 		})
 		.pipe(gulp.dest(JS_DEST));
@@ -33,7 +33,7 @@ function compileScripts() {
 
 export { JS_SRC, JS_DEST };
 
-const runScripts = gulp.series(fixScripts, compileScripts);
+const runScripts = gulp.series(lintScripts, compileScripts);
 export default runScripts;
 
 gulp.task('scripts', runScripts);
