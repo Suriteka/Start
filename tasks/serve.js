@@ -5,7 +5,7 @@ import runBuild from './build';
 import runSass, { SASS_SRC } from './sass';
 import runScripts, { JS_SRC } from './scripts';
 import runHtml, { HTML_SRC } from './html';
-import runImages, { IMG_SRC } from './image';
+import runImages, { IMG_SRC } from './images';
 import runFont, { FONT_SRC } from './font';
 import runVendor, { VENDOR_SRC } from './vendor';
 
