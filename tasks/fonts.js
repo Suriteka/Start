@@ -1,7 +1,6 @@
 import gulp from 'gulp';
 import ttftowoff from 'gulp-ttf2woff';
 import dotenv from 'dotenv';
-import plumber from 'gulp-plumber';
 
 dotenv.config();
 
@@ -10,9 +9,7 @@ const FONT_DEST = process.env.FONT_DEST ? process.env.FONT_DEST : process.env.DE
 
 function convertFonts() {
 	return gulp.src(FONT_SRC)
-		.pipe(plumber()) // Prevent pipe breaking caused by errors
 		.pipe(ttftowoff({ clone: true, ignoreExt: true }))
-		.pipe(plumber.stop())
 		.pipe(gulp.dest(FONT_DEST));
 }
 
