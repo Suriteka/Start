@@ -15,7 +15,7 @@ function convertFonts() {
 
 export { FONT_SRC, FONT_DEST };
 
-const runFont = gulp.series(convertFonts);
-export default runFont;
+const runFonts = gulp.series(convertFonts);
+export default runFonts;
 
-gulp.task('font', runFont);
+gulp.task('fonts', runFonts);
