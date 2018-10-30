@@ -8,7 +8,7 @@ import runImages from './image';
 import runAccessibility from './accessibility';
 import runFont from './font';
 import runRevision from './revision';
-import runCopyVendor from './vendor';
+import runCopyVendor from './vendors';
 
 dotenv.config();
 
