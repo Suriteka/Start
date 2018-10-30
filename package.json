@@ -45,6 +45,7 @@
     "gulp-eslint": "^5.0.0",
     "gulp-html-minify": "0.0.14",
     "gulp-hub": "^4.2.0",
+    "gulp-if": "^2.0.2",
     "gulp-imagemin": "^4.1.0",
     "gulp-plumber": "^1.2.0",
     "gulp-rev": "^9.0.0",
