@@ -17,7 +17,7 @@ function compileScripts() {
 		.pipe(eslint())
 		.pipe(eslint.format())
 		.pipe(webpackStream(webpackConfig), webpack)
-		.on('error', function handleError() {
+		.on('error', () => {
 			this.emit('end'); // Recover from errors
 		})
 		.pipe(plumber.stop())
