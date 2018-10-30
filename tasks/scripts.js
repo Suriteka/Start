@@ -1,5 +1,4 @@
 import gulp from 'gulp';
-import plumber from 'gulp-plumber';
 import eslint from 'gulp-eslint';
 import webpack from 'webpack';
 import webpackStream from 'webpack-stream';
@@ -13,14 +12,12 @@ const JS_DEST = process.env.JS_DEST ? process.env.JS_DEST : process.env.DEST;
 
 function compileScripts() {
 	return gulp.src(JS_SRC)
-		.pipe(plumber()) // Prevent pipe breaking caused by errors
 		.pipe(eslint())
 		.pipe(eslint.format())
 		.pipe(webpackStream(webpackConfig), webpack)
 		.on('error', () => {
 			this.emit('end'); // Recover from errors
 		})
-		.pipe(plumber.stop())
 		.pipe(gulp.dest(JS_DEST));
 }
 
