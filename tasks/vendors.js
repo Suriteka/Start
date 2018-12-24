@@ -10,7 +10,7 @@ const ROBOT_TXT = process.env.SRC + '/robots.txt';
 const SITEMAP = process.env.SRC + '/sitemap.xml';
 const HUMANS = process.env.SRC + '/humans.txt';
 
-function copyVendor() {
+function copyVendors() {
 	return gulp.src(VENDOR_SRC)
 		.pipe(gulp.dest(VENDOR_DEST));
 }
@@ -22,7 +22,7 @@ function copyFiles() {
 
 export { VENDOR_SRC, VENDOR_DEST };
 
-const runVendorCopy = gulp.series(copyVendor, copyFiles);
-export default runVendorCopy;
+const runVendors = gulp.series(copyVendors, copyFiles);
+export default runVendors;
 
-gulp.task('vendorCopy', runVendorCopy);
+gulp.task('vendors', runVendors);
