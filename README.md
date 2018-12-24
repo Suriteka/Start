@@ -2,7 +2,7 @@
 ## Installation
 Install dependencies
 ```
-git clone https://github.com/suriteka/gulp-recipe/
+git clone https://github.com/truchot/gulp-recipes/
 ```
 ```
 npm i
@@ -62,13 +62,6 @@ gulp scripts
 ```
 ## And more
 You can set a folder for *images*, *vendors* (assets that you don't need to be build), *fonts*... You can change folder variables in the `.env` file. When everything is set you can start developing by launching the gulp task named `scripts` or `build` if you want to build.
-
-You can also launch gulp tasks one by one by writing `gulp` and the name of the task. For example: 
-- `gulp revision`
-- `gulp revisionRewrite`
-- `gulp clean`
-- `gulp accessibility`
-- `gulp vendorCopy`
  
 
 ## Build
@@ -78,7 +71,7 @@ When the project is ready to go, You can run the npm script
 npm run build
 ```
 
-This will generate a production files into `DEST`
+This will generate a production files into `DEST` folder
 
 ## Roadmap
 ### Assets
