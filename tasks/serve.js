@@ -2,7 +2,7 @@ import gulp from 'gulp';
 import browserSync from 'browser-sync';
 import dotenv from 'dotenv';
 import runBuild from './build';
-import runSass, { SASS_SRC } from './sass';
+import runSass, { SASS_SRC, SASS_DEST } from './sass';
 import runScripts, { JS_SRC } from './scripts';
 import runHtml, { HTML_SRC } from './html';
 import runFonts, { FONT_SRC } from './fonts';
