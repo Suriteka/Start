@@ -1,39 +1,39 @@
-import gulp from "gulp";
-import sourcemaps from "gulp-sourcemaps";
-import babel from "gulp-babel";
-import uglify from "gulp-uglify";
-import concat from "gulp-concat";
-import plumber from "gulp-plumber";
-import dotenv from "dotenv";
+import gulp from 'gulp';
+import eslint from 'gulp-eslint';
+import gulpIf from 'gulp-if';
+import webpack from 'webpack';
+import webpackStream from 'webpack-stream';
+import webpackConfig  from '../webpack.config';
+import dotenv from 'dotenv';
 
 dotenv.config();
 
-let JS_SRC = process.env.SRC + "/**/*.js";
-let JS_DEST = process.env.DEST;
+const JS_SRC = process.env.JS_SRC ? process.env.JS_SRC : `${process.env.SRC}/**/*.js`;
+const JS_DEST = process.env.JS_DEST ? process.env.JS_DEST : process.env.DEST;
 
-if(process.env.JS_SRC){
-    JS_SRC = process.env.JS_SRC;
+function isFixed(file) {
+	return file.eslint != null && file.eslint.fixed;
 }
 
-if(process.env.JS_DEST){
-    JS_DEST = process.env.JS_DEST;
+function lintScripts() {
+	return gulp.src(JS_SRC)
+		.pipe(eslint({ fix: true }))
+		.pipe(eslint.format())
+		.pipe(gulpIf(isFixed, gulp.dest(process.env.SRC)))
 }
 
 function compileScripts() {
-    return gulp.src(JS_SRC)
-        .pipe(plumber()) // Prevent pipe breaking caused by errors
-        .pipe(sourcemaps.init())
-        .pipe(babel())
-        .pipe(uglify())
-        .pipe(concat("app.js"))
-        .pipe(sourcemaps.write())
-        .pipe(plumber.stop())
-        .pipe(gulp.dest(JS_DEST));
-};
+	return gulp.src(JS_SRC)
+		.pipe(webpackStream(webpackConfig), webpack)
+		.on('error', function handleError() { // It crashes if we make an arrow function
+			this.emit('end'); // Recover from errors
+		})
+		.pipe(gulp.dest(JS_DEST));
+}
 
 export { JS_SRC, JS_DEST };
 
-const runScripts = gulp.series(compileScripts);
+const runScripts = gulp.series(lintScripts, compileScripts);
 export default runScripts;
 
-gulp.task("scripts", runScripts);
+gulp.task('scripts', runScripts);
