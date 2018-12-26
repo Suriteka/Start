@@ -21,9 +21,11 @@
     "url": "https://github.com/truchot/gulp-recipes/issues"
   },
   "homepage": "https://github.com/truchot/gulp-recipes#readme",
-  "devDependencies": {
+  "devDependencies": {},
+  "dependencies": {
     "@babel/preset-env": "^7.1.0",
-    "@babel/register": "^7.0.0",
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
@@ -46,7 +48,7 @@
     "gulp-html-minify": "0.0.14",
     "gulp-hub": "^4.2.0",
     "gulp-if": "^2.0.2",
-    "gulp-imagemin": "^4.1.0",
+    "gulp-imagemin": "^5.0.3",
     "gulp-plumber": "^1.2.0",
     "gulp-rev": "^9.0.0",
     "gulp-rev-delete-original": "^0.2.3",
@@ -58,9 +60,5 @@
     "gulp-uglify": "^3.0.0",
     "webpack": "^4.23.1",
     "webpack-stream": "^5.1.1"
-  },
-  "dependencies": {
-    "babel": "^6.23.0",
-    "babel-cli": "^6.26.0"
   }
 }
