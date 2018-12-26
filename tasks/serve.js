@@ -22,7 +22,7 @@ function serve(done) {
 	let options = {
 		server: {
 			baseDir: process.env.DEST,
-		},
+		}
 	};
 
 	if (process.env.URL) {
@@ -30,13 +30,28 @@ function serve(done) {
 			proxy: process.env.URL,
 		};
 	}
+  
+  if( process.env.URL ) {
+      options = {
+          proxy: process.env.URL
+      };
+  }
 
-	server.init(options);
-	done();
+  /* Hot Reload on CSS from https://medium.com/@jh3y/how-to-css-streaming-injection-with-browsersync-194edc6cd774 */
+  server.watch(SASS_DEST, (evt, file) => {
+      if (evt === 'change' && file.indexOf('.css') === -1)
+          server.reload();
+		  if (evt === 'change' && file.indexOf('.css') !== -1)
+          gulp.src(file)
+              .pipe(server.stream());
+  });
+
+  server.init( options );
+  done();
 }
 
 const watchHtml = () => gulp.watch(HTML_SRC, gulp.series(runHtml, reload));
-const watchSass = () => gulp.watch(SASS_SRC, gulp.series(runSass, reload));
+const watchSass = () => gulp.watch(SASS_SRC, gulp.series(runSass)); // Hot Reload run by BrowserSync
 const watchScripts = () => gulp.watch(JS_SRC, gulp.series(runScripts, reload));
 const watchImages = () => gulp.watch(IMG_SRC, gulp.series(runImages, reload));
 const watchFonts = () => gulp.watch(FONT_SRC, gulp.series(runFonts, reload));
