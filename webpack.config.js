@@ -1,14 +1,23 @@
-import dotenv from 'dotenv';
+/*
+ * @title Webpack Config
+ */
 
-dotenv.config();
+// Dependencies
+import glob from "glob";
 
-const JS_NAME = process.env.JS_NAME ? process.env.JS_NAME : 'bundle.js';
-const MODE = process.env.NODE_ENV === 'dev' ? 'development' : 'production';
+// Config
+import { isProd, JS_SRC } from './gulpfile.babel';
 
+const MODE = isProd === 'dev' ? 'development' : 'production';
+
+// Webpack
 module.exports = {
 	mode: MODE,
+	entry: {
+    	app: glob.sync(JS_SRC)
+  	},
 	output: {
-		filename: JS_NAME,
+    	filename: '[name].js',
 	},
 	module: {
 		rules: [{
