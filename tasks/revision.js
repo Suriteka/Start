@@ -1,3 +1,9 @@
+/*
+ * @title Revisions
+ * @description Cache busting with gulp
+ */
+
+// Dependencies
 import gulp from 'gulp';
 import rev from 'gulp-rev';
 import revFormat from 'gulp-rev-format';
@@ -6,9 +12,11 @@ import revRewrite from 'gulp-rev-rewrite';
 import dotenv from 'dotenv';
 import plumber from 'gulp-plumber';
 
+// Config
 dotenv.config();
 
-function addRevisionName() {
+// Tasks
+export function addRevisionName() {
 	return gulp.src([
 		`${process.env.DEST}/**/*.css`,
 		`${process.env.DEST}/**/*.js`
@@ -23,7 +31,7 @@ function addRevisionName() {
 		.pipe(gulp.dest(process.env.DEST));
 }
 
-function revisionRewrite() {
+export function revisionRewrite() {
     const manifest = gulp.src(`${process.env.DEST}/manifest.json`);
 
     return gulp.src(`${process.env.DEST}/**/*`)
@@ -31,8 +39,4 @@ function revisionRewrite() {
         .pipe(gulp.dest(process.env.DEST));
 }
 
-const runRevision = gulp.series(addRevisionName, revisionRewrite);
-export default runRevision;
-
-gulp.task('revision', addRevisionName);
-gulp.task('revisionRewrite', revisionRewrite);
+export const runRevision = gulp.series(addRevisionName, revisionRewrite);

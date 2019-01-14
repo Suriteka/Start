@@ -1,14 +1,16 @@
-import gulp from 'gulp';
+/*
+ * @title Clean
+ * @description Empty the destination folder
+ */
+
+// Dependencies
 import del from 'del';
 import dotenv from 'dotenv';
 
+// Config
 dotenv.config();
 
-function clean() {
+// Task
+export function clean() {
 	return del(`${process.env.DEST}/*`);
 }
-
-const runClean = gulp.series(clean);
-export default runClean;
-
-gulp.task('clean', clean);

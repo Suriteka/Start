@@ -1,16 +1,22 @@
+/*
+ * @title Scripts
+ * @description A task to concatenate and compress js files via webpack
+ */
+
+// Dependencies
 import gulp from 'gulp';
 import eslint from 'gulp-eslint';
+import plumber from 'gulp-plumber';
 import gulpIf from 'gulp-if';
 import webpack from 'webpack';
 import webpackStream from 'webpack-stream';
 import webpackConfig  from '../webpack.config';
-import dotenv from 'dotenv';
+import errorHandler from './errorHandler';
 
-dotenv.config();
+// Consts
+import { JS_SRC, JS_DEST } from '../gulpfile.babel';
 
-const JS_SRC = process.env.JS_SRC ? process.env.JS_SRC : `${process.env.SRC}/**/*.js`;
-const JS_DEST = process.env.JS_DEST ? process.env.JS_DEST : process.env.DEST;
-
+// Tasks
 function isFixed(file) {
 	return file.eslint != null && file.eslint.fixed;
 }
@@ -22,18 +28,11 @@ function lintScripts() {
 		.pipe(gulpIf(isFixed, gulp.dest(process.env.SRC)))
 }
 
-function compileScripts() {
+export function transpileScripts() {
 	return gulp.src(JS_SRC)
-		.pipe(webpackStream(webpackConfig), webpack)
-		.on('error', function handleError() { // It crashes if we make an arrow function
-			this.emit('end'); // Recover from errors
-		})
+		.pipe(plumber({errorHandler}))
+    	.pipe(webpackStream(webpackConfig, webpack))
 		.pipe(gulp.dest(JS_DEST));
 }
 
-export { JS_SRC, JS_DEST };
-
-const runScripts = gulp.series(lintScripts, compileScripts);
-export default runScripts;
-
-gulp.task('scripts', runScripts);
+export const scripts = gulp.series(lintScripts, transpileScripts);
