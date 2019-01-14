@@ -19,7 +19,7 @@ export const JS_SRC = process.env.JS_SRC ? process.env.JS_SRC : `${process.env.S
 export const JS_DEST = process.env.JS_DEST ? process.env.JS_DEST : process.env.DEST;
 
 // IMG
-export const IMG_SRC = process.env.IMG_SRC ? process.env.IMG_SRC : `${process.env.SRC}/**/*.{png,gif,jpg,svg}`;
+export const IMG_SRC = process.env.IMG_SRC ? process.env.IMG_SRC : `${process.env.SRC}/**/*.{jpg,jpeg,png,svg,gif,webp}`;
 export const IMG_DEST = process.env.IMG_DEST ? process.env.IMG_DEST : process.env.DEST;
 
 // FONTS
