@@ -7,13 +7,9 @@
 import gulp from 'gulp';
 import htmlMinify from 'gulp-html-minify';
 import plumber from 'gulp-plumber';
-import dotenv from 'dotenv';
 
 // Config
-dotenv.config();
-
-const HTML_SRC = process.env.HTML_SRC ? process.env.HTML_SRC : `${process.env.SRC}/**/*.html`;
-const HTML_DEST = process.env.HTML_DEST ? process.env.HTML_DEST : process.env.DEST;
+import { HTML_SRC, HTML_DEST } from '../gulpfile.babel';
 
 // Tasks
 export function compileHtml() {

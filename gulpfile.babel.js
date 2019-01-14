@@ -10,6 +10,10 @@ import dotenv from 'dotenv';
 // Config
 dotenv.config();
 
+// HTML
+export const HTML_SRC = process.env.HTML_SRC ? process.env.HTML_SRC : `${process.env.SRC}/**/*.html`;
+export const HTML_DEST = process.env.HTML_DEST ? process.env.HTML_DEST : process.env.DEST;
+
 // SASS
 export const SASS_SRC = process.env.SASS_SRC ? process.env.SASS_SRC : `${process.env.SRC}/**/*.scss`;
 export const SASS_DEST = process.env.SASS_DEST ? process.env.SASS_DEST : process.env.DEST;
@@ -40,8 +44,8 @@ import { convertFonts } from './tasks/fonts';
 
 // Gulp Tasks
 function watch() {
-  gulp.watch(process.env.DEST, compileHtml);
-  gulp.watch(SASS_SRC, compileSass);
+  gulp.watch(HTML_SRC, gulp.series(compileHtml, reload));
+  gulp.watch(SASS_SRC, gulp.series(compileSass, reload));
   gulp.watch(JS_SRC, gulp.series(scripts, reload));
   gulp.watch(IMG_SRC, gulp.series(optimizeImages, reload));
   gulp.watch(FONT_SRC, gulp.series(convertFonts, reload));
