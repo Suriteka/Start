@@ -11,17 +11,15 @@ module.exports = {
 		filename: JS_NAME,
 	},
 	module: {
-		rules: [
-			{
-				test: /\.(js|jsx)$/,
-				exclude: /(node_modules)/,
+		rules: [{
+			test: /^(?!.*\.{test,min}\.js$).*\.js$/,
+			exclude: /(node_modules)/,
+			use: {
 				loader: 'babel-loader',
-				query: {
-					presets: [
-						['latest', { modules: false }],
-					],
-				},
-			},
-		],
+				options: {
+					presets: ['@babel/preset-env']
+				}
+			}
+		}]
 	},
 };
