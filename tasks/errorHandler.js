@@ -3,7 +3,7 @@
  */
 
 // Depedencies
-import notifier from "node-notifier";
+import notifier from 'node-notifier';
 
 // Task
 export function errorHandler(error) {
