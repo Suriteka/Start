@@ -12,15 +12,20 @@ dotenv.config();
 
 // Task
 export function serve(callback) {
-  let options = {
-    server: {
-      baseDir: [ process.env.DEST ]
-    },
-    notify: false
-  }
+  let options = {};
 
   if (process.env.URL) {
-    options.proxy = process.env.URL
+    options = {
+      proxy: process.env.URL,
+      notify: false
+    };
+  } else {
+    options = {
+      server: {
+        baseDir: [ process.env.DEST ]
+      },
+      notify: false
+    }
   }
 
   browserSync.init(options);
