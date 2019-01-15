@@ -12,6 +12,7 @@ import webpack from 'webpack';
 import webpackStream from 'webpack-stream';
 import webpackConfig  from '../webpack.config';
 import named from 'vinyl-named';
+import rename from 'gulp-rename';
 import errorHandler from './errorHandler';
 import dotenv from 'dotenv';
 
@@ -34,10 +35,18 @@ function lintScripts() {
 }
 
 export function transpileScripts() {
+	let tmp = {};
+
 	return gulp.src([JS_SRC])
 		.pipe(named())
+		.pipe(rename(function (path) {
+      		tmp[path.basename] = path;
+    	}))   
     	.pipe(webpackStream(webpackConfig, webpack))
-		.pipe(gulp.dest(JS_DEST + '/'));
+		.pipe(rename(function (path) {
+      		path.dirname = tmp[path.basename].dirname;
+    	}))
+		.pipe(gulp.dest(JS_DEST));
 }
 
 export const scripts = gulp.series(lintScripts, transpileScripts);

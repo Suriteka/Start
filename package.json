@@ -48,6 +48,7 @@
     "gulp-if": "^2.0.2",
     "gulp-imagemin": "^5.0.3",
     "gulp-plumber": "^1.2.0",
+    "gulp-rename": "^1.4.0",
     "gulp-rev": "^9.0.0",
     "gulp-rev-delete-original": "^0.2.3",
     "gulp-rev-format": "^1.0.4",
