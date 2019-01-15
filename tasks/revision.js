@@ -15,11 +15,15 @@ import plumber from 'gulp-plumber';
 // Config
 dotenv.config();
 
+// Consts
+import { SASS_DEST } from './sass';
+import { JS_DEST } from './scripts';
+
 // Tasks
 export function addRevisionName() {
 	return gulp.src([
-		`${process.env.DEST}/**/*.css`,
-		`${process.env.DEST}/**/*.js`
+		SASS_DEST,
+		JS_DEST
 	])
 		.pipe(plumber())
 		.pipe(rev())

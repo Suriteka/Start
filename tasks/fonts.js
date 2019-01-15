@@ -6,9 +6,14 @@
 // Dependencies
 import gulp from 'gulp';
 import ttftowoff from 'gulp-ttf2woff';
+import dotenv from 'dotenv';
 
 // Config
-import { FONT_SRC, FONT_DEST } from '../gulpfile.babel';
+dotenv.config();
+
+// Consts
+export const FONT_SRC = process.env.FONT_SRC ? process.env.FONT_SRC : `${process.env.SRC}/**/*.{ttf,otf,woff,woff2}`;
+export const FONT_DEST = process.env.FONT_DEST ? process.env.FONT_DEST : process.env.DEST;
 
 // Tasks
 export function convertFonts() {

@@ -13,14 +13,14 @@ import webpackStream from 'webpack-stream';
 import webpackConfig  from '../webpack.config';
 import named from 'vinyl-named';
 import rename from 'gulp-rename';
-import errorHandler from './errorHandler';
 import dotenv from 'dotenv';
 
 // Config
 dotenv.config();
 
-const JS_SRC = process.env.JS_SRC ? process.env.JS_SRC : `${process.env.SRC}/**/*.js`;
-const JS_DEST = process.env.JS_DEST ? process.env.JS_DEST : process.env.DEST;
+// Consts 
+export const JS_SRC = process.env.JS_SRC ? process.env.JS_SRC : `${process.env.SRC}/**/*.js`;
+export const JS_DEST = process.env.JS_DEST ? process.env.JS_DEST : process.env.DEST;
 
 // Tasks
 function isFixed(file) {

@@ -6,9 +6,14 @@
 // Dependencies
 import gulp from 'gulp';
 import imagemin from 'gulp-imagemin';
+import dotenv from 'dotenv';
 
 // Config
-import { IMG_SRC, IMG_DEST } from '../gulpfile.babel';
+dotenv.config();
+
+// Consts
+export const IMG_SRC = process.env.IMG_SRC ? process.env.IMG_SRC : `${process.env.SRC}/**/*.{jpg,jpeg,png,svg,gif,webp}`;
+export const IMG_DEST = process.env.IMG_DEST ? process.env.IMG_DEST : process.env.DEST;
 
 // Tasks
 export function optimizeImages() {

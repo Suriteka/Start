@@ -10,16 +10,20 @@ import sass from 'gulp-sass';
 import autoprefixer from 'gulp-autoprefixer';
 import cleanCSS from 'gulp-clean-css';
 import plumber from 'gulp-plumber';
-import errorHandler from './errorHandler';
 import browserSync from 'browser-sync'
+import dotenv from 'dotenv';
+
+// Config
+dotenv.config();
 
 // Consts
-import { SASS_SRC, SASS_DEST} from '../gulpfile.babel';
+export const SASS_SRC = process.env.SASS_SRC ? process.env.SASS_SRC : `${process.env.SRC}/**/*.scss`;
+export const SASS_DEST = process.env.SASS_DEST ? process.env.SASS_DEST : process.env.DEST;
 
 // Task
 export function compileSass() {
 	return gulp.src(SASS_SRC)
-		.pipe(plumber({errorHandler}))
+		.pipe(plumber())
 		.pipe(sourcemaps.init())
 		.pipe(sass({
 			includePaths: [
