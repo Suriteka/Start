@@ -5,8 +5,7 @@
 // Dependencies
 
 // Config
-import { isProd } from './gulpfile.babel'
-const MODE = isProd ? 'production' : 'development'
+const MODE = process.env.NODE_ENV == 'prod' ? 'production' : 'development'
 
 // Webpack
 module.exports = {
