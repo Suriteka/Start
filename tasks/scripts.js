@@ -5,7 +5,6 @@
 
 // Dependencies
 import gulp from 'gulp';
-import named from 'vinyl-named';
 import eslint from 'gulp-eslint';
 import plumber from 'gulp-plumber';
 import gulpIf from 'gulp-if';
@@ -13,28 +12,31 @@ import webpack from 'webpack';
 import webpackStream from 'webpack-stream';
 import webpackConfig  from '../webpack.config';
 import errorHandler from './errorHandler';
+import dotenv from 'dotenv';
 
-// Consts
-import { JS_SRC, JS_DEST } from '../gulpfile.babel';
+// Config
+dotenv.config();
+
+const JS_SRC = process.env.JS_SRC ? process.env.JS_SRC : `${process.env.SRC}/**/*.js`;
+const JS_DEST = process.env.JS_DEST ? process.env.JS_DEST : process.env.DEST;
 
 // Tasks
 function isFixed(file) {
-	return file.eslint != null && file.eslint.fixed;
+    return file.eslint != null && file.eslint.fixed;
 }
 
 function lintScripts() {
-	return gulp.src(JS_SRC)
-		.pipe(eslint({ fix: true }))
+	return gulp.src(JS_SRC, { base: './' })
+        .pipe(eslint({fix:true}))
 		.pipe(eslint.format())
-		.pipe(gulpIf(isFixed, gulp.dest(JS_SRC)))
+		.pipe(gulpIf(isFixed, gulp.dest('./')));
 }
 
 export function transpileScripts() {
 	return gulp.src(JS_SRC)
 		.pipe(plumber({errorHandler}))
-		.pipe(named())
     	.pipe(webpackStream(webpackConfig, webpack))
-		.pipe(gulp.dest(JS_DEST));
+		.pipe(gulp.dest(JS_DEST + '/'));
 }
 
 export const scripts = gulp.series(lintScripts, transpileScripts);

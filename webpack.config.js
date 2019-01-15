@@ -6,7 +6,6 @@
 import dotenv from 'dotenv';
 import glob from 'glob';
 
-
 // Config
 import { isProd } from './gulpfile.babel';
 const MODE = isProd ? 'production' : 'development';
@@ -15,8 +14,6 @@ dotenv.config();
 
 const JS_SRC = process.env.JS_SRC ? process.env.JS_SRC : `${process.env.SRC}/**/*.js`;
 const JS_DEST = process.env.JS_DEST ? process.env.JS_DEST : process.env.DEST;
-
-console.log(JS_SRC);
 
 // Webpack
 module.exports  = {

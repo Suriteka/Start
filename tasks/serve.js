@@ -12,7 +12,7 @@ dotenv.config();
 
 // Task
 export function serve(callback) {
-  options = {
+  let options = {
     server: {
       baseDir: [ process.env.DEST ]
     },
