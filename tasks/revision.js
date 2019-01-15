@@ -9,21 +9,13 @@ import rev from 'gulp-rev';
 import revFormat from 'gulp-rev-format';
 import revDel from 'gulp-rev-delete-original';
 import revRewrite from 'gulp-rev-rewrite';
-import dotenv from 'dotenv';
 import plumber from 'gulp-plumber';
-
-// Config
-dotenv.config();
-
-// Consts
-import { SASS_DEST } from './sass';
-import { JS_DEST } from './scripts';
 
 // Tasks
 export function addRevisionName() {
 	return gulp.src([
-		SASS_DEST,
-		JS_DEST
+		`${process.env.DEST}/**/*.css`,
+		`${process.env.DEST}/**/*.js`
 	])
 		.pipe(plumber())
 		.pipe(rev())
