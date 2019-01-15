@@ -5,6 +5,7 @@
 
 // Dependencies
 import gulp from 'gulp';
+import gulpIf from 'gulp-if';
 import sourcemaps from 'gulp-sourcemaps';
 import sass from 'gulp-sass';
 import autoprefixer from 'gulp-autoprefixer';
@@ -20,6 +21,8 @@ dotenv.config();
 export const SASS_SRC = process.env.SASS_SRC ? process.env.SASS_SRC : `${process.env.SRC}/**/*.scss`;
 export const SASS_DEST = process.env.SASS_DEST ? process.env.SASS_DEST : process.env.DEST;
 
+import { isProd } from '../gulpfile.babel';
+
 // Task
 export function compileSass() {
 	return gulp.src(SASS_SRC)
@@ -33,7 +36,7 @@ export function compileSass() {
 		}))
 		.pipe(autoprefixer()) // Add vendor prefixes to CSS rules by Can I Use
 		.pipe(cleanCSS()) // Minify CSS
-		.pipe(sourcemaps.write())
+		.pipe(gulpIf(!isProd, sourcemaps.write()))
 		.pipe(plumber.stop())
 		.pipe(gulp.dest(SASS_DEST))
 		.pipe(browserSync.stream());
