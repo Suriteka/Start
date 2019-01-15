@@ -2,7 +2,8 @@
   "name": "tco-gulp-recipes",
   "version": "1.0.0",
   "description": "Gulp recipes",
-  "main": "gulpfile.babel.js",
+  "main": "gulpfile.js",
+  "preferGlobal": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cross-env NODE_ENV=dev gulp dev",
@@ -20,10 +21,14 @@
   "bugs": {
     "url": "https://github.com/truchot/gulp-recipes/issues"
   },
+  "bin": {
+    "fts-gulp": "./bin/fts-gulp.js"
+  },
   "homepage": "https://github.com/truchot/gulp-recipes#readme",
-  "dependencies": {},
-  "devDependencies": {
+  "dependencies": {
+    "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
     "@babel/preset-env": "^7.1.0",
     "@babel/register": "^7.0.0",
     "babel-loader": "^8.0.4",
