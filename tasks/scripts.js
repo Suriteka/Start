@@ -11,6 +11,7 @@ import gulpIf from 'gulp-if';
 import webpack from 'webpack';
 import webpackStream from 'webpack-stream';
 import webpackConfig  from '../webpack.config';
+import named from 'vinyl-named';
 import errorHandler from './errorHandler';
 import dotenv from 'dotenv';
 
@@ -33,8 +34,8 @@ function lintScripts() {
 }
 
 export function transpileScripts() {
-	return gulp.src(JS_SRC)
-		.pipe(plumber({errorHandler}))
+	return gulp.src([JS_SRC])
+		.pipe(named())
     	.pipe(webpackStream(webpackConfig, webpack))
 		.pipe(gulp.dest(JS_DEST + '/'));
 }
