@@ -5,8 +5,8 @@
   "main": "gulpfile.babel.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "NODE_ENV=dev gulp dev",
-    "build": "NODE_ENV=prod gulp build"
+    "start": "cross-env NODE_ENV=dev gulp dev",
+    "build": "cross-env NODE_ENV=prod gulp build"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/truchot/gulp-recipes#readme",
   "devDependencies": {
+    "cross-env": "^5.2.0",
     "gulp": "^4.0.0",
     "vinyl-named": "^1.1.0"
   },
