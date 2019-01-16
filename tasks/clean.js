@@ -4,13 +4,15 @@
  */
 
 // Dependencies
-import del from 'del';
-import dotenv from 'dotenv';
+const del = require('del');
+const dotenv = require('dotenv');
 
 // Config
 dotenv.config();
 
 // Task
-export function clean() {
+function clean () {
 	return del(`${process.env.DEST}/*`);
 }
+
+exports.clean = clean;

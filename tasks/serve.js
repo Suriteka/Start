@@ -4,28 +4,28 @@
  */
 
 // Dependencies
-import gulp from 'gulp';
-import browserSync from 'browser-sync';
-import dotenv from 'dotenv';
+const gulp = require('gulp');
+const browserSync = require('browser-sync');
+const dotenv = require('dotenv');
 
-import { compileHtml } from './html';
-import { compileSass } from './sass';
-import { scripts } from './scripts';
-import { optimizeImages } from './images';
-import { convertFonts } from './fonts';
+const compileHtml = require('./html').compileHtml;
+const compileSass = require('./sass').compileSass;
+const scripts = require('./scripts').scripts;
+const optimizeImages = require('./images').optimizeImages;
+const convertFonts = require('./fonts').convertFonts;
 
 // Config
 dotenv.config();
 
 // Consts
-import { HTML_SRC } from './html';
-import { SASS_SRC } from './sass';
-import { JS_SRC } from './scripts';
-import { IMG_SRC } from './images';
-import { FONT_SRC } from './fonts';
+const HTML_SRC = require('./html').HTML_SRC;
+const SASS_SRC = require('./sass').SASS_SRC;
+const JS_SRC = require('./scripts').JS_SRC;
+const IMG_SRC = require('./images').IMG_SRC;
+const FONT_SRC = require('./fonts').FONT_SRC;
 
 // Tasks
-export function serve(callback) {
+function serve(callback) {
   let options = {};
 
   if (process.env.URL) {
@@ -47,7 +47,7 @@ export function serve(callback) {
   callback();
 }
 
-export function reload(callback) {
+function reload(callback) {
   browserSync.reload();
   callback();
 }
@@ -59,3 +59,5 @@ function watch() {
   gulp.watch(IMG_SRC, gulp.series(optimizeImages, reload));
   gulp.watch(FONT_SRC, gulp.series(convertFonts, reload));
 }
+
+exports.serve = serve;

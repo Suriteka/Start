@@ -4,20 +4,24 @@
  */
 
 // Dependencies
-import gulp from 'gulp';
-import ttftowoff from 'gulp-ttf2woff';
-import dotenv from 'dotenv';
+const gulp = require('gulp');
+const ttftowoff = require('gulp-ttf2woff');
+const dotenv = require('dotenv');
 
 // Config
 dotenv.config();
 
 // Consts
-export const FONT_SRC = process.env.FONT_SRC ? process.env.FONT_SRC : `${process.env.SRC}/**/*.{ttf,otf,woff,woff2}`;
-export const FONT_DEST = process.env.FONT_DEST ? process.env.FONT_DEST : process.env.DEST;
+const FONT_SRC = process.env.FONT_SRC ? process.env.FONT_SRC : `${process.env.SRC}/**/*.{ttf,otf,woff,woff2}`;
+const FONT_DEST = process.env.FONT_DEST ? process.env.FONT_DEST : process.env.DEST;
 
 // Tasks
-export function convertFonts() {
+function convertFonts() {
 	return gulp.src(FONT_SRC)
 		.pipe(ttftowoff({ clone: true, ignoreExt: true }))
 		.pipe(gulp.dest(FONT_DEST));
 }
+
+exports.convertFonts = convertFonts;
+exports.FONT_SRC = FONT_SRC;
+exports.FONT_DEST = FONT_DEST;

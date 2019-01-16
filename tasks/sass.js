@@ -4,27 +4,27 @@
  */
 
 // Dependencies
-import gulp from 'gulp';
-import gulpIf from 'gulp-if';
-import sourcemaps from 'gulp-sourcemaps';
-import sass from 'gulp-sass';
-import autoprefixer from 'gulp-autoprefixer';
-import cleanCSS from 'gulp-clean-css';
-import plumber from 'gulp-plumber';
-import browserSync from 'browser-sync'
-import dotenv from 'dotenv';
+const gulp = require('gulp');
+const gulpIf = require('gulp-if');
+const sourcemaps = require('gulp-sourcemaps');
+const sass = require('gulp-sass');
+const autoprefixer = require('gulp-autoprefixer');
+const cleanCSS = require('gulp-clean-css');
+const plumber = require('gulp-plumber');
+const browserSync = require('browser-sync');
+const dotenv = require('dotenv');
 
 // Config
 dotenv.config();
 
 // Consts
-export const SASS_SRC = process.env.SASS_SRC ? process.env.SASS_SRC : `${process.env.SRC}/**/*.scss`;
-export const SASS_DEST = process.env.SASS_DEST ? process.env.SASS_DEST : process.env.DEST;
+const SASS_SRC = process.env.SASS_SRC ? process.env.SASS_SRC : `${process.env.SRC}/**/*.scss`;
+const SASS_DEST = process.env.SASS_DEST ? process.env.SASS_DEST : process.env.DEST;
 
-import { isProd } from '../gulpfile.babel';
+const isProd = require('../gulpfile').isProd;
 
 // Task
-export function compileSass() {
+function compileSass() {
 	return gulp.src(SASS_SRC)
 		.pipe(plumber())
 		.pipe(sourcemaps.init())
@@ -41,3 +41,7 @@ export function compileSass() {
 		.pipe(gulp.dest(SASS_DEST))
 		.pipe(browserSync.stream());
 }
+
+exports.compileSass = compileSass;
+exports.SASS_SRC = SASS_SRC;
+exports.SASS_DEST = SASS_DEST;

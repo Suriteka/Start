@@ -4,23 +4,27 @@
  */
 
 // Dependencies
-import gulp from 'gulp';
-import htmlMinify from 'gulp-html-minify';
-import plumber from 'gulp-plumber';
-import dotenv from 'dotenv';
+const gulp = require('gulp');
+const htmlMinify = require('gulp-html-minify');
+const plumber = require('gulp-plumber');
+const dotenv = require('dotenv');
 
 // Config
 dotenv.config()
 
 // Consts
-export const HTML_SRC = process.env.HTML_SRC ? process.env.HTML_SRC : `${process.env.SRC}/**/*.html`;
-export const HTML_DEST = process.env.HTML_DEST ? process.env.HTML_DEST : process.env.DEST;
+const HTML_SRC = process.env.HTML_SRC ? process.env.HTML_SRC : `${process.env.SRC}/**/*.html`;
+const HTML_DEST = process.env.HTML_DEST ? process.env.HTML_DEST : process.env.DEST;
 
 // Tasks
-export function compileHtml() {
+function compileHtml() {
 	return gulp.src(HTML_SRC)
 		.pipe(plumber())
 		.pipe(htmlMinify())
 		.pipe(plumber.stop())
 		.pipe(gulp.dest(HTML_DEST));
 }
+
+exports.compileHtml = compileHtml;
+exports.HTML_SRC = HTML_SRC;
+exports.HTML_DEST = HTML_DEST;

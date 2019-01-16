@@ -4,23 +4,22 @@
  */
 
 // Dependencies
-import gulp from 'gulp';
-import eslint from 'gulp-eslint';
-import plumber from 'gulp-plumber';
-import gulpIf from 'gulp-if';
-import webpack from 'webpack';
-import webpackStream from 'webpack-stream';
-import webpackConfig  from '../webpack.config';
-import named from 'vinyl-named';
-import rename from 'gulp-rename';
-import dotenv from 'dotenv';
+const gulp = require('gulp');
+const eslint = require('gulp-eslint');
+const gulpIf = require('gulp-if');
+const webpack = require('webpack');
+const webpackStream = require('webpack-stream');
+const webpackConfig = require('../webpack.config');
+const named = require('vinyl-named');
+const rename = require('gulp-rename');
+const dotenv = require('dotenv');
 
 // Config
 dotenv.config();
 
 // Consts 
-export const JS_SRC = process.env.JS_SRC ? process.env.JS_SRC : `${process.env.SRC}/**/*.js`;
-export const JS_DEST = process.env.JS_DEST ? process.env.JS_DEST : process.env.DEST;
+const JS_SRC = process.env.JS_SRC ? process.env.JS_SRC : `${process.env.SRC}/**/*.js`;
+const JS_DEST = process.env.JS_DEST ? process.env.JS_DEST : process.env.DEST;
 
 // Tasks
 function isFixed(file) {
@@ -34,7 +33,7 @@ function lintScripts() {
 		.pipe(gulpIf(isFixed, gulp.dest('./')));
 }
 
-export function transpileScripts() {
+function transpileScripts() {
 	let tmp = {};
 
 	return gulp.src([JS_SRC])
@@ -49,4 +48,6 @@ export function transpileScripts() {
 		.pipe(gulp.dest(JS_DEST));
 }
 
-export const scripts = gulp.series(lintScripts, transpileScripts);
+exports.scripts = gulp.series(lintScripts, transpileScripts);
+exports.JS_SRC = JS_SRC;
+exports.JS_DEST = JS_DEST;

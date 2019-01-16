@@ -4,15 +4,15 @@
  */
 
 // Dependencies
-import gulp from 'gulp';
-import rev from 'gulp-rev';
-import revFormat from 'gulp-rev-format';
-import revDel from 'gulp-rev-delete-original';
-import revRewrite from 'gulp-rev-rewrite';
-import plumber from 'gulp-plumber';
+const gulp = require('gulp');
+const rev = require('gulp-rev');
+const revFormat = require('gulp-rev-format');
+const revDel = require('gulp-rev-delete-original');
+const revRewrite = require('gulp-rev-rewrite');
+const plumber = require('gulp-plumber');
 
 // Tasks
-export function addRevisionName() {
+function addRevisionName() {
 	return gulp.src([
 		`${process.env.DEST}/**/*.css`,
 		`${process.env.DEST}/**/*.js`
@@ -27,7 +27,7 @@ export function addRevisionName() {
 		.pipe(gulp.dest(process.env.DEST));
 }
 
-export function revisionRewrite() {
+function revisionRewrite() {
     const manifest = gulp.src(`${process.env.DEST}/manifest.json`);
 
     return gulp.src(`${process.env.DEST}/**/*`)
@@ -35,4 +35,4 @@ export function revisionRewrite() {
         .pipe(gulp.dest(process.env.DEST));
 }
 
-export const runRevision = gulp.series(addRevisionName, revisionRewrite);
+exports.runRevision = gulp.series(addRevisionName, revisionRewrite);
