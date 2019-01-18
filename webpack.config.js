@@ -1,27 +1,38 @@
-import dotenv from 'dotenv';
+/*
+ * @title Webpack Config
+ */
 
-dotenv.config();
+// Dependencies
 
-const JS_NAME = process.env.JS_NAME ? process.env.JS_NAME : 'bundle.js';
-const MODE = process.env.NODE_ENV === 'dev' ? 'development' : 'production';
+// Config
+const MODE = process.env.NODE_ENV == 'prod' ? 'production' : 'development'
 
+// Webpack
 module.exports = {
-	mode: MODE,
-	output: {
-		filename: JS_NAME,
-	},
-	module: {
-		rules: [
-			{
-				test: /\.(js|jsx)$/,
-				exclude: /(node_modules)/,
-				loader: 'babel-loader',
-				query: {
-					presets: [
-						['latest', { modules: false }],
-					],
-				},
-			},
-		],
-	},
-};
+  mode: MODE,
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendor',
+          chunks: 'all'
+        }
+      }
+    }
+  },
+  module: {
+    rules: [
+      {
+        test: /^(?!.*\.{test,min}\.js$).*\.js$/,
+        exclude: /(node_modules)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
+      }
+    ]
+  }
+}

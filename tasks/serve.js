@@ -1,63 +1,63 @@
-import gulp from 'gulp';
-import browserSync from 'browser-sync';
-import dotenv from 'dotenv';
-import runBuild from './build';
-import runSass, { SASS_SRC, SASS_DEST } from './sass';
-import runScripts, { JS_SRC } from './scripts';
-import runHtml, { HTML_SRC } from './html';
-import runFonts, { FONT_SRC } from './fonts';
-import runImages, { IMG_SRC } from './images';
-import runVendors, { VENDOR_SRC } from './vendors';
+/*
+ * @title Server
+ * @description A task to initialise a local server
+ */
 
-const server = browserSync.create();
+// Dependencies
+const gulp = require('gulp');
+const browserSync = require('browser-sync');
+const dotenv = require('dotenv');
 
-function reload(done) {
-	server.reload();
-	done();
-}
+const compileHtml = require('./html').compileHtml;
+const compileSass = require('./sass').compileSass;
+const scripts = require('./scripts').scripts;
+const optimizeImages = require('./images').optimizeImages;
+const convertFonts = require('./fonts').convertFonts;
 
-function serve(done) {
-	dotenv.config();
+// Config
+dotenv.config();
 
-	let options = {
-		server: {
-			baseDir: process.env.DEST,
-		}
-	};
+// Consts
+const HTML_SRC = require('./html').HTML_SRC;
+const SASS_SRC = require('./sass').SASS_SRC;
+const JS_SRC = require('./scripts').JS_SRC;
+const IMG_SRC = require('./images').IMG_SRC;
+const FONT_SRC = require('./fonts').FONT_SRC;
 
-	if (process.env.URL) {
-		options = {
-			proxy: process.env.URL,
-		};
-	}
-  
-  if( process.env.URL ) {
-      options = {
-          proxy: process.env.URL
-      };
+// Tasks
+function serve(callback) {
+  let options = {};
+
+  if (process.env.URL) {
+    options = {
+      proxy: process.env.URL,
+      notify: false
+    };
+  } else {
+    options = {
+      server: {
+        baseDir: [ process.env.DEST ]
+      },
+      notify: false
+    }
   }
 
-  /* Hot Reload on CSS from https://medium.com/@jh3y/how-to-css-streaming-injection-with-browsersync-194edc6cd774 */
-  server.watch(SASS_DEST, (evt, file) => {
-      if (evt === 'change' && file.indexOf('.css') === -1)
-          server.reload();
-		  if (evt === 'change' && file.indexOf('.css') !== -1)
-          gulp.src(file)
-              .pipe(server.stream());
-  });
-
-  server.init( options );
-  done();
+  browserSync.init(options);
+  watch();
+  callback();
 }
 
-const watchHtml = () => gulp.watch(HTML_SRC, gulp.series(runHtml, reload));
-const watchSass = () => gulp.watch(SASS_SRC, gulp.series(runSass)); // Hot Reload run by BrowserSync
-const watchScripts = () => gulp.watch(JS_SRC, gulp.series(runScripts, reload));
-const watchImages = () => gulp.watch(IMG_SRC, gulp.series(runImages, reload));
-const watchFonts = () => gulp.watch(FONT_SRC, gulp.series(runFonts, reload));
-const watchVendors = () => gulp.watch(VENDOR_SRC, gulp.series(runVendors, reload));
+function reload(callback) {
+  browserSync.reload();
+  callback();
+}
 
-const runWatch = gulp.parallel(watchHtml, watchSass, watchScripts, watchImages, watchFonts, watchVendors);
-const runServe = gulp.series(runBuild, serve, runWatch);
+function watch() {
+  gulp.watch(HTML_SRC, gulp.series(compileHtml, reload));
+  gulp.watch(SASS_SRC, gulp.series(compileSass, reload));
+  gulp.watch(JS_SRC, gulp.series(scripts, reload));
+  gulp.watch(IMG_SRC, gulp.series(optimizeImages, reload));
+  gulp.watch(FONT_SRC, gulp.series(convertFonts, reload));
+}
 
-gulp.task('serve', runServe);
+exports.serve = serve;

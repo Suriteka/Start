@@ -53,7 +53,6 @@ You can add `JS_SRC` and `JS_DEST` constants in your `.env` file, to specify cus
 ```
 JS_SRC=./src/scripts/**/*.js
 JS_DEST=./public/scripts/
-JS_NAME='bundle.js'
 ```
 And run gulp task named `scripts`
 

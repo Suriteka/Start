@@ -1,13 +1,17 @@
-import gulp from 'gulp';
-import rev from 'gulp-rev';
-import revFormat from 'gulp-rev-format';
-import revDel from 'gulp-rev-delete-original';
-import revRewrite from 'gulp-rev-rewrite';
-import dotenv from 'dotenv';
-import plumber from 'gulp-plumber';
+/*
+ * @title Revisions
+ * @description Cache busting with gulp
+ */
 
-dotenv.config();
+// Dependencies
+const gulp = require('gulp');
+const rev = require('gulp-rev');
+const revFormat = require('gulp-rev-format');
+const revDel = require('gulp-rev-delete-original');
+const revRewrite = require('gulp-rev-rewrite');
+const plumber = require('gulp-plumber');
 
+// Tasks
 function addRevisionName() {
 	return gulp.src([
 		`${process.env.DEST}/**/*.css`,
@@ -31,8 +35,4 @@ function revisionRewrite() {
         .pipe(gulp.dest(process.env.DEST));
 }
 
-const runRevision = gulp.series(addRevisionName, revisionRewrite);
-export default runRevision;
-
-gulp.task('revision', addRevisionName);
-gulp.task('revisionRewrite', revisionRewrite);
+exports.runRevision = gulp.series(addRevisionName, revisionRewrite);

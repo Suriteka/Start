@@ -1,13 +1,3 @@
 {
-    "extends": "airbnb",
-    "env": {
-        "browser": true,
-        "es6": true
-    },
-    "rules": {
-        "indent": ["error", "tab"],
-        "semi": ["error", "always"],
-        "no-tabs": "off",
-        "no-console": "off"
-    }
+  "extends": ["standard"]
 }
