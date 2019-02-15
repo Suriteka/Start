@@ -16,7 +16,7 @@ Once it's done, let's run ```npm run init```
 This will ask you some questions about your project. WordPress part isn't finished yet.
 You now have default files at the root of your project that is important (```.eslint, example.env, .babelrc, ...```), you change change them. But the most important is to create your own .env.
 
-# ENV
+## ENV
 You need to construct the skeleton of you architecture as you want it to be.
 
 Configure your environment with `.env` file you'll create at the root of the project. You have an example of the configuration with example.env file.
@@ -104,7 +104,7 @@ This will generate production files into `DEST` folder
 - [ ] Generate unminified stylesheet (https://www.npmjs.com/package/gulp-cssbeautify)
 - [ ] LESS compilation (https://www.npmjs.com/package/gulp-less)
 #### Template
-- [x] ~~HTML minification~np~
+- [x] ~~HTML minification~~
 #### Fonts
 - [x] ~~Generate missing extension~~
 #### Images
