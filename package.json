@@ -1,8 +1,7 @@
 {
-  "name": "tco-gulp-recipes",
+  "name": "@bazooka/bzk",
   "version": "1.0.0",
-  "description": "Gulp recipes",
-  "main": "gulpfile.js",
+  "description": "Start your projects with Gulp and Webpack 4 ! 📔",
   "preferGlobal": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -14,15 +13,15 @@
     "url": "git+https://github.com/truchot/gulp-recipes.git"
   },
   "keywords": [
-    "gulp"
+    "bazooka", "gulp", "webpack"
   ],
-  "author": "Florian Truchot",
+  "author": "Fantassin",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/truchot/gulp-recipes/issues"
   },
   "bin": {
-    "fts-gulp": "./bin/fts-gulp.js"
+    "bzk": "./bin/bzk.js"
   },
   "homepage": "https://github.com/truchot/gulp-recipes#readme",
   "dependencies": {
