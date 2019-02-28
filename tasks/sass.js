@@ -26,7 +26,10 @@ const isProd = require('../gulpfile').isProd;
 // Task
 function compileSass() {
 	return gulp.src(SASS_SRC)
-		.pipe(plumber())
+		.pipe(plumber({ errorHandler: function(err) {
+            browserSync.notify(err.message, 3000);
+			this.emit('end');
+        }}))
 		.pipe(sourcemaps.init())
 		.pipe(sass({
 			includePaths: [
@@ -37,7 +40,6 @@ function compileSass() {
 		.pipe(autoprefixer()) // Add vendor prefixes to CSS rules by Can I Use
 		.pipe(cleanCSS()) // Minify CSS
 		.pipe(gulpIf(!isProd, sourcemaps.write()))
-		.pipe(plumber.stop())
 		.pipe(gulp.dest(SASS_DEST))
 		.pipe(browserSync.stream());
 }
