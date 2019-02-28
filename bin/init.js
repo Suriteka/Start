@@ -128,7 +128,7 @@ function copyInitialFiles(wo) {
 	console.log("Copying default files");
 
 	// .env
-	fs.copyFile(`${__dirname}/../example.env`, './example.env', (err) => {
+	fs.copyFile(`${__dirname}/../example.env`, './.env', (err) => {
 		if (err) throw err;
 		console.log('.env was copied to the root');
 	});
