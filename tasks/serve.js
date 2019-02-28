@@ -54,7 +54,7 @@ function reload(callback) {
 
 function watch() {
   gulp.watch(HTML_SRC, gulp.series(compileHtml, reload));
-  gulp.watch(SASS_SRC, gulp.series(compileSass, reload));
+  gulp.watch(SASS_SRC, gulp.series(compileSass));
   gulp.watch(JS_SRC, gulp.series(scripts, reload));
   gulp.watch(IMG_SRC, gulp.series(optimizeImages, reload));
   gulp.watch(FONT_SRC, gulp.series(convertFonts, reload));
