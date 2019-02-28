@@ -27,7 +27,8 @@ const isProd = require('../gulpfile').isProd;
 function compileSass() {
 	return gulp.src(SASS_SRC)
 		.pipe(plumber({ errorHandler: function(err) {
-            browserSync.notify(err.message, 3000);
+			console.log('\x1b[31m', err.message);
+            browserSync.notify(err.message, 5);
 			this.emit('end');
         }}))
 		.pipe(sourcemaps.init())

@@ -31,14 +31,14 @@ function serve(callback) {
   if (process.env.URL) {
     options = {
       proxy: process.env.URL,
-      notify: false
+      notify: true
     };
   } else {
     options = {
       server: {
         baseDir: [ process.env.DEST ]
       },
-      notify: false
+      notify: true
     }
   }
 
