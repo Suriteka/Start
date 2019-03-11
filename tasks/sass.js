@@ -8,6 +8,7 @@ const gulp = require('gulp');
 const gulpIf = require('gulp-if');
 const sourcemaps = require('gulp-sourcemaps');
 const sass = require('gulp-sass');
+const sassTilde = require('node-sass-tilde-importer')
 const autoprefixer = require('gulp-autoprefixer');
 const cleanCSS = require('gulp-clean-css');
 const plumber = require('gulp-plumber');
@@ -36,6 +37,7 @@ function compileSass() {
 			includePaths: [
 				'node_modules'
 			],
+			importer: sassTilde,
 			outputStyle: 'compressed'
 		}))
 		.pipe(autoprefixer()) // Add vendor prefixes to CSS rules by Can I Use
