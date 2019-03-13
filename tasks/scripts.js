@@ -17,7 +17,7 @@ const dotenv = require('dotenv');
 // Config
 dotenv.config();
 
-// Consts 
+// Consts
 const JS_SRC = process.env.JS_SRC ? process.env.JS_SRC : `${process.env.SRC}/**/*.js`;
 const JS_DEST = process.env.JS_DEST ? process.env.JS_DEST : process.env.DEST;
 
@@ -40,10 +40,15 @@ function transpileScripts() {
 		.pipe(named())
 		.pipe(rename(function (path) {
       		tmp[path.basename] = path;
-    	}))   
+    	}))	  
     	.pipe(webpackStream(webpackConfig, webpack))
 		.pipe(rename(function (path) {
-      		path.dirname = tmp[path.basename].dirname;
+			if (!tmp.hasOwnProperty(path.basename)) {
+			    Object.assign(tmp, { [path.basename] : { dirname: tmp[Object.keys(tmp)[0]].dirname }})
+            }
+			if (path.dirname && tmp[path.basename].dirname) {
+				path.dirname = tmp[path.basename].dirname;
+			}
     	}))
 		.pipe(gulp.dest(JS_DEST));
 }
