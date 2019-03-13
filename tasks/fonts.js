@@ -18,7 +18,7 @@ const FONT_DEST = process.env.FONT_DEST ? process.env.FONT_DEST : process.env.DE
 // Tasks
 function convertFonts() {
 	return gulp.src(FONT_SRC)
-		.pipe(ttftowoff({ clone: true, ignoreExt: true }))
+		.pipe(ttftowoff({ clone: true }))
 		.pipe(gulp.dest(FONT_DEST));
 }
 
