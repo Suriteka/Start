@@ -28,7 +28,7 @@ function addRevisionName() {
 }
 
 function revisionRewrite() {
-    const manifest = gulp.src(`${process.env.DEST}/manifest.json`);
+    const manifest = gulp.src(`${process.env.DEST}/manifest.json`, { allowEmpty: true });
 
     return gulp.src(`${process.env.DEST}/**/*`)
         .pipe(revRewrite({ manifest }))
