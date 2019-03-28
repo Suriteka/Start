@@ -1,8 +1,15 @@
 # PhpStorm
 .idea
 
+# VSC
+.vscode
+
+# SublimeText
+.phpintel
+
 # Dependency directories
-node_modules/
+node_modules
+vendor
 
 # Logs
 logs
@@ -13,14 +20,15 @@ yarn-error.log*
 
 # dotenv environment variables file
 .env
+.env.*
 
 # Optional npm cache directory
 .npm
 
 # Dest folder
-public/
-dist/
-build/
+public
+dist
+build
 
 # Mac
 .DS_STORE
