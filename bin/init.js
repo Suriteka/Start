@@ -149,6 +149,12 @@ function copyInitialFiles(wo) {
 		if (err) throw err;
 		console.log('.babelrc was copied to the root');
 	});
+	
+	// Gitignore
+	fs.copyFile(`${__dirname}/../.gitignore`, './.gitignore', (err) => {
+		if (err) throw err;
+		console.log('.gitignore was copied to the root');
+	});
 }
 
 console.log('\n✨Fantassin — Gulp — Webpack and WordPress ✨');
